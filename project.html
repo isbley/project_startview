@@ -12,13 +12,18 @@
       a {text-decoration: none; color: black;}
       a:active {text-decoration: none; color: black;}
       a:hover {font-size: 21px; text-decoration:underline; }
-      body {text-align: center; background-color: rgb(222, 238, 238);}
+      /* th:first-child, td:first-child, tr {border: 1px solid gainsboro; border-left: none;} */
+      body {
+         text-align: center;
+         background-color: rgb(222, 238, 238);
+      }
+
+      .info {text-align: center; font-size: 50px; margin-top: 50px;}
       .table1 {margin-left: 570px;}
-      .devinfo {text-align: center; margin-top: 100px;}
-      .info, .pro, .story, .cess {font-size: 30px;}
+      .name {text-align: center; margin-top: 20px; margin-left: -300px; font-size: 20px;}
+      .am, .pro, .story, .arc {font-size: 30px;}
       .myphoto, .aboutme {text-align: left; padding-top: 20px; padding-left: 50px;}
       .myphoto {padding-top: 20px;}
-      .aboutme {margin-left: -300px; font-size: 20px;}
       .prolan, .db {text-align: center; font-size: 25px; margin-right: 250px; margin-top: 30px;}
       .proimg1, .dbimg1 {margin-left: -430px;}
       .proimg2, .dbimg2 {margin-left: -180px;}
@@ -34,18 +39,19 @@
       .protext1, .protext2, .protext3 {font-size: 20px;}
 
       .table3 {text-align: center; margin-left: 570px; margin-top: 280px;}
-      .history {text-align: center; }
+      .history {text-align: center;}
       .storytext1 {text-align: left; margin-top: 15px; padding-bottom: 30px; font-size: 20px;}
       .storytext2 {text-align: left; font-size: 20px;}
       .storytext1, .storytext2 {margin-left: 30px;}
 
       .table4 {text-align: center; margin-left: 1250px; margin-top: -320px;}
-      .cess {text-align: center;}
-      .cessimg1, .cessimg2 {font-size: 27px;}
-      .cessimg1 {text-align: center; margin-left: -300px;}
-      .cessimg2 {text-align: center; margin-left: -410px; margin-top: 8px;}
+      .arc {text-align: center;}
+      .arcimg1, .arcimg2 {font-size: 27px;}
+      .arcimg1 {text-align: center; margin-left: -300px;}
+      .arcimg2 {text-align: center; margin-left: -410px; margin-top: 8px;}
+      .github {margin-top: -21px;}
 
-      .circle1 {
+      /* .circle1 {
          text-align: center;
          width: 400px;
          height : 400px;
@@ -62,26 +68,134 @@
          margin : -830px 0px 0px 1611px;
          position: fixed;
          z-index: -1;
+      } */
+
+      .square1 {
+         width: 1530px;
+         height: 1060px;
+         margin-top: -1010px;
+         margin-left: 500px;
+         border-radius: 10px;
+         opacity: 90%;
+         background-color: white;
+         position: relative;
+         z-index: -1;
       }
-      .github {margin-top: -21px;}
+      .square2 {
+         width: 1500px;
+         height: 1030px;
+         margin-top: -1050px;
+         margin-left: 510px;
+         position: relative;
+         z-index: -1;
+         border: 5px solid rgb(222, 238, 238);
+         border-radius: 10px;
+      }
+
+      .line1 {
+         width: 35em;
+         height: 2px;
+         background-color: rgb(222, 238, 238);
+         margin-left: 590px;
+         margin-top: -680px;
+      }
+      .line2 {
+         width: 35em;
+         height: 2px;
+         background-color: rgb(222, 238, 238);
+         margin-left: 590px;
+         margin-top: 160px;
+      }
+
+      /* 팝업 배경스타일(=모달)-어둡게 만들기 */
+      .background {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: rgba(0, 0, 0, 0.5);
+         z-index: -1;
+         opacity: 0;
+      }
+      /* 팝업 배경 보여주기 css */
+      .show {
+         opacity: 1;
+         z-index: 1000;
+         transition: all .5s;
+      }
+
+      /* 팝업 버튼 스타일 */
+      #show {
+         margin: 0 0 0 20em;
+      } 
+      /* 팝업 창 */
+      .window {
+         position: relative;
+         width: 100%;
+         height: 100%;
+      }
+      /* 팝업 스타일 코드 */
+      .popup {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -40%);
+         background-color: #ffffff;
+         box-shadow: 0 2px 7px rgba(0, 0, 0, 0.5);  /* 팝업 그림자 */
+  
+      /* 임시 지정(팝업 열었을 때 창 크기) */
+         width: 50%;      /* 원래는 화면의 세로길이를 넘어가는 경우에만 height를 지정하여 스크롤을 넣음, 그렇지 않은 경우에는 내용을 넣으면 알아서 예쁘게 화면이 늘어나기 때문에 둘다 지정x. */
+         height: 90%;
+      }
+      /* 팝업 창 초기 */
+      .show .popup {
+         transform: translate(-50%, -50%);
+         transition: all .5s;
+      }
+      /* 팝업 창 끄는 버튼 */
+      .close {
+         float:right;
+         padding-right: 10px;
+         padding-top: 10px;
+         font-weight: bold;
+         color: rgb(158, 192, 192);
+         font-size: 20px;
+         cursor: pointer;
+      }
+      /* 버튼을 감싸는 영역 */
+      /* .show {
+         width: 500px;
+         margin: 100px auto;
+      } */
+
+      /* 버튼 디자인 */
+      /* .popupbutten {
+         width: 150px;
+         height: 50px;
+         padding: 10px 5px;
+      } */
    </style>
 </head>
 <body>
+   <header>
+      <div class="info"><b>- INFO -</b></div>
+   </header>
    <section>
          <form>
             <table class="table1">
                <thead>
                   <tr colspan="2">
-                     <div class="devinfo">
-                        <td><h3 class="info"> Dev.Info </h3>
-                        <hr class="infohr" style = "border: 2px black solid" width=600px></td>
+                     <div class="aboutme">
+                        <td><h3 class="am"> About me </h3>
+                        <hr class="amhr" style = "border: 2px black solid" width=600px></td>
                      </div>
                  </tr>
                </thead>
                <tbody>
                   <tr>
                      <td><div class="myphoto"><img src="girlcat.jpg" width=200px height=200px></div></td>
-                     <td><div class="aboutme"><b>Name) Kim Ju Hyeon<br><br>Age) 23<br><br>Tel) 010-xxxx-xxxx<br><br>Contact) o_-ct@naver.com</b></div></td>
+                     <td><div class="name"><b>Name) Kim Ju Hyeon<br><br>Age) 23<br><br>Tel) 010-xxxx-xxxx<br><br>Contact) o_-ct@naver.com</b></div></td>
                   </tr>
                   <tr>
                      <td><div class="prolan"><b>Programming<br>Language</b></div></td>
@@ -134,7 +248,7 @@
             <thead>
                <tr>
                   <div class="history">
-                     <td><h3 class="story"> History </h3>
+                     <td><h3 class="story"> Career </h3>
                      <hr class="storyhr" style = "border: 2px black solid" width=600px></td>
                   </div>
                </tr>
@@ -155,16 +269,16 @@
          <table class="table4">         
             <thead>
                <tr colspan="2">
-                  <div class="process">
-                     <td><h3 class="cess"> Process </h3>
-                     <hr class="cesshr" style = "border: 2px black solid" width=700px></td>
+                  <div class="Archiving">
+                     <td><h3 class="arc"> Archiving </h3>
+                     <hr class="archr" style = "border: 2px black solid" width=700px></td>
                   </div>
                </tr>
             </thead>
             <tbody>
                <tr>
-                  <td><div class="cessimg1"><center><b>Dev.Blog</b><br></center><hr class="cesshrshort1" style = "border: 2px black solid" width=115px><a href="https://blog.naver.com/o_bley" target="_blank"><img class="blog" src="블로그2.png" width=80px height=80px></a></div></td>
-                  <td><div class="cessimg2"><center><b>Github</b><br></center><hr class="cesshrshort2" style = "border: 2px black solid" width=115px><a href="https://github.com/isbley/github.git" target="_blank"><img class="github" src="github.png" width=110px height=110px></a></div></td>
+                  <td><div class="arcimg1"><center><b>Dev.Blog</b><br></center><hr class="cesshrshort1" style = "border: 2px black solid" width=115px><a href="https://blog.naver.com/o_bley" target="_blank"><img class="blog" src="블로그2.png" width=80px height=80px></a></div></td>
+                  <td><div class="arcimg2"><center><b>Github</b><br></center><hr class="cesshrshort2" style = "border: 2px black solid" width=115px><a href="https://github.com/isbley/github.git" target="_blank"><img class="github" src="github.png" width=110px height=110px></a></div></td>
                </tr>
             </tbody>
          </table>
@@ -172,5 +286,42 @@
    </section>
    <div class="circle1"></div>
    <div class="circle2"></div>
+   <div class="square1"></div>
+   <div class="square2"></div>
+   <div class="line1"></div>
+   <div class="line2"></div>
+   <div class="line3"></div>
+
+   <div class="show">
+      <button id="show">팝업열기</button>
+   </div>
+   <div class="background">
+      <div class="window">
+         <div class="popup">
+            <span id="close" class="close">&times;</span>
+            <p>project contents.</p>
+         </div>
+      </div>
+   </div>
+   <script>
+      const modal = document.getElementById('background');
+
+      function show() {
+         document.querySelector(".background").className = "background show";
+      }
+
+      function close() {
+         document.querySelector(".background").className = "background";
+      }
+
+      document.querySelector("#show").addEventListener("click", show);
+      document.querySelector("#close").addEventListener("click", close);
+
+      window.onclick = function(event) {
+         if (event.target == modal) {
+            modal.style.display = "none";
+         }
+      }
+   </script>
 </body>
 </html>
